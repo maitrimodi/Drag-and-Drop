@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop using javascript</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      function allowDrop(ev) {
+          ev.preventDefault();
+      }
+
+      function dragStart(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function dragDrop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+      }
+  </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="left" class="leftContainer"  ondrop="dragDrop(event)" 
+      ondragover="allowDrop(event)">
+        <div id="item1" class="itemContainer" draggable="true" ondragstart="dragStart(event)" >
+          <div>
+            <img src="icon.png" alt="icon" class="imageStyle">
+          </div>
+          <div class="listItemStyle">
+            List Item 1
+          </div>
+        </div>
+        <div id="item2" class="itemContainer" draggable="true" ondragstart="dragStart(event)">
+          <div>
+            <img src="icon.png" alt="icon" class="imageStyle">
+          </div>
+          <div class="listItemStyle">
+            List Item 2
+          </div>
+        </div>
+        <div id="item13" class="itemContainer" draggable="true" ondragstart="dragStart(event)">
+          <div>
+            <img src="icon.png" alt="icon" class="imageStyle">
+          </div>
+          <div class="listItemStyle">
+            List Item 3
+          </div>
+        </div>
+        <div id="item4" class="itemContainer" draggable="true" ondragstart="dragStart(event)">
+          <div>
+            <img src="icon.png" alt="icon" class="imageStyle">
+          </div>
+          <div class="listItemStyle">
+            List Item 4
+          </div>
+        </div>
+      </div>
+      <div id="right" class="rightContainer" ondrop="dragDrop(event)" 
+      ondragover="allowDrop(event)">
+      </div>
+    </div>
+   
+  </body>
+</html>
